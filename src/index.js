@@ -15,12 +15,21 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//Consulta de todos los usuarios
+//Consulta los usuarios
 const queryUsers = require('./users/queryUser').consultarTodosUsuarios;
 app.get('/usuarios', (req,res) => queryUsers(req,res,con) );
-//Consulta de los datos de vehículos
-const queryVeh = require('./vehicles/queryVehicles').consultarVehiculo;
+
+
+//Consulta de los vehículos
+const queryVeh = require('./vehicles/queryVehicles').consultarVehiculos;
 app.get('/vehiculos', (req,res) => queryVeh(req,res,con) );
+
+
+//Consulta de los servicios
+const querySer = require('./services/queryServices').consultarServicios;
+app.get('/servicios', (req,res) => querySer(req,res,con) );
+
+
 
 
 //Nuestro primer WS POST
