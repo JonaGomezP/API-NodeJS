@@ -21,6 +21,24 @@ const consultarServicios = (req, res, con) => {
             // console.log("Result: " + JSON.stringify(result,null,2));
         });
         //Si se pasa la matrícula
+    } else if (req.query.matricula) {
+        let matricula = req.query.matricula;
+        let sql = "SELECT * from lista_servicios where matricula =" + matricula;
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            return res.json(result);
+
+            // console.log("Result: " + JSON.stringify(result,null,2));
+        });
+    } else if (req.query.servicio) {
+        let servicio = req.query.servicio;
+        let sql = "SELECT * from lista_servicios where servicio =" + servicio;
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            return res.json(result);
+
+            // console.log("Result: " + JSON.stringify(result,null,2));
+        });
     } else {
         let sql = "SELECT * from lista_servicios ";
         con.query(sql, function (err, result) {

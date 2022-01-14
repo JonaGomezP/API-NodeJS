@@ -7,18 +7,40 @@
     <meta name="viewport" content="width=ç, initial-scale=1.0">
     <title>M4UTO</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cormorant+Garamond:wght@300&family=Special+Elite&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <img id="fondo" src="../img/megane.jpg" alt="">
     <div>
-        <form action=""></form>
+        <h1>Usuarios</h1>
+        <form action="localhost:81/usuarios">
+            <input type="text" name="id_usuario" placeholder="ID de usuario">
+            <input type="text" name="nombre" placeholder="Nombre de usuario">
+            <input type="image" src="../img/lupa.jpg.png" alt="">
+        </form>
     </div>
     <div>
-        hola
+        <h1>Vehículos</h1>
+        <form action="localhost:81/usuarios">
+            <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
+            <input type="text" name="id_usuario" placeholder="ID de usuario">
+            <input type="text" name="matricula" placeholder="Matrícula">
+            <input type="image" src="../img/lupa.jpg.png" alt="">
+        </form>
     </div>
     <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo debitis fugit, consequuntur eveniet cupiditate quibusdam exercitationem! Numquam, facere. Debitis dicta consequatur assumenda veniam incidunt quam dolorum. Quibusdam nostrum deleniti veritatis?
+        <h1>Servicios</h1>
+        <form action="localhost:81/usuarios">
+            <input type="text" name="id_servicio" placeholder="ID del servicio">
+            <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
+            <input type="text" name="matricula" placeholder="Matrícula">
+            <input type="text" name="servicio" placeholder="Tipo de servicio">
+            <input type="image" src="../img/lupa.jpg.png" alt="" onclick="">
+        </form>
     </div>
 </body>
 
