@@ -32,3 +32,4 @@ const consultarTodosUsuarios = (req, res, con) => {
     }
 }
 exports.consultarTodosUsuarios = consultarTodosUsuarios;
+

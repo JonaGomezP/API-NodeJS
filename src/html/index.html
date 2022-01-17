@@ -12,20 +12,39 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cormorant+Garamond:wght@300&family=Special+Elite&display=swap"
         rel="stylesheet">
+    <script>
+        async function consultarUsuarios(e) {
+            e.preventDefault();
+            const response = await fetch("http://localhost:3000/usuarios", {
+                method: 'GET',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error(response.statusText);
+                    }
+                    return response;
+                })
+                .then(response => response.json())
+                .then(data => console.log(data))
+        }
+    </script>
 </head>
 
 <body>
     <div>
         <h1>Usuarios</h1>
-        <form action="localhost:81/usuarios">
+        <form action="index.html">
             <input type="text" name="id_usuario" placeholder="ID de usuario">
             <input type="text" name="nombre" placeholder="Nombre de usuario">
-            <input type="image" src="../img/lupa.jpg.png" alt="">
+            <input type="image" src="../img/lupa.jpg.png" alt="Consultar" onclick="consultarUsuarios(event)">
         </form>
     </div>
     <div>
         <h1>Vehículos</h1>
-        <form action="localhost:81/usuarios">
+        <form action="">
             <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
             <input type="text" name="id_usuario" placeholder="ID de usuario">
             <input type="text" name="matricula" placeholder="Matrícula">
@@ -34,7 +53,7 @@
     </div>
     <div>
         <h1>Servicios</h1>
-        <form action="localhost:81/usuarios">
+        <form action="">
             <input type="text" name="id_servicio" placeholder="ID del servicio">
             <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
             <input type="text" name="matricula" placeholder="Matrícula">
