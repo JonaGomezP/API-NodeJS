@@ -14,22 +14,33 @@
         rel="stylesheet">
     <script>
         async function consultarUsuarios(e) {
-            e.preventDefault();
-            const response = await fetch("http://localhost:3000/usuarios", {
-                method: 'GET',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                }
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw Error(response.statusText);
+            try {
+                e.preventDefault();
+                const response = await fetch("http://192.168.56.1:3000/usuarios", {
+                    method: 'GET',
+                    mode: 'no-cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        "Access-Control-Allow-Headers": "Content-Type",
+                        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+                        "Access-Control-Allow-Origin": '*'
                     }
-                    return response;
                 })
-                .then(response => response.json())
-                .then(data => console.log(data))
+                    .then(response => {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response;
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+            } catch (error) {
+                console.log(error)
+            }
+
         }
+
     </script>
 </head>
 

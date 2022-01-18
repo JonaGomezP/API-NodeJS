@@ -2,6 +2,12 @@
 const c = require('./common/connectionBBDD');
 var con = c.connection();
 
+bodyParser = require('body-parser'),
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+const cors = require('../node_modules/cors');
+app.use(cors());
+
 const { query } = require('express');
 const express = require('express');
 const app = express();
