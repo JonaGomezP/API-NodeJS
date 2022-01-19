@@ -13,32 +13,85 @@
         href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cormorant+Garamond:wght@300&family=Special+Elite&display=swap"
         rel="stylesheet">
     <script>
-        async function consultarUsuarios(e) {
-            try {
-                e.preventDefault();
-                const response = await fetch("http://192.168.56.1:3000/usuarios", {
-                    method: 'GET',
-                    mode: 'no-cors',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        "Access-Control-Allow-Headers": "Content-Type",
-                        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-                        "Access-Control-Allow-Origin": '*'
-                    }
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw Error(response.statusText);
-                        }
-                        return response;
-                    })
-                    .then(response => response.json())
-                    .then(data => console.log(data))
-            } catch (error) {
-                console.log(error)
-            }
+        function consultarUsuarios(e) {
 
+            e.preventDefault();
+            let id_usu = document.forms[0].id_usuario.value;
+            let nombreUsu = document.forms[0].nombre.value;
+
+            fetch("http://192.168.56.1:3000/usuarios", {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: new URLSearchParams({
+                    'user.iduser':id_usu,
+                    'user.name':nombreUsu
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error(response.statusText);
+                    }
+                    return response;
+                })
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => console.log(data))
+
+            // let tabla = document.createElement("table");
+            // data.forEach(e => {
+            //     console.log(e)
+            // });
+        }
+
+        function consuktarVehiculos(e) {
+
+            e.preventDefault();
+            fetch("http://192.168.56.1:3000/vehiculos", {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error(response.statusText);
+                    }
+                    return response;
+                })
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => console.log(data))
+        }
+
+        function consultarServicios(e) {
+
+            e.preventDefault();
+            fetch("http://192.168.56.1:3000/servicios", {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error(response.statusText);
+                    }
+                    return response;
+                })
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => console.log(data))
         }
 
     </script>
@@ -47,29 +100,29 @@
 <body>
     <div>
         <h1>Usuarios</h1>
-        <form action="index.html">
+        <form action="index.html" method="get">
             <input type="text" name="id_usuario" placeholder="ID de usuario">
             <input type="text" name="nombre" placeholder="Nombre de usuario">
-            <input type="image" src="../img/lupa.jpg.png" alt="Consultar" onclick="consultarUsuarios(event)">
+            <input type="image" src="../img/lupa.jpg.png" alt="Consultar usuarios" onclick="consultarUsuarios(event)">
         </form>
     </div>
     <div>
         <h1>Vehículos</h1>
-        <form action="">
+        <form action="index.html" method="get">
             <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
             <input type="text" name="id_usuario" placeholder="ID de usuario">
             <input type="text" name="matricula" placeholder="Matrícula">
-            <input type="image" src="../img/lupa.jpg.png" alt="">
+            <input type="image" src="../img/lupa.jpg.png" alt="Consultar vehículos" onclick="consuktarVehiculos(event)">
         </form>
     </div>
     <div>
         <h1>Servicios</h1>
-        <form action="">
+        <form action="index.html" method="get">
             <input type="text" name="id_servicio" placeholder="ID del servicio">
             <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
             <input type="text" name="matricula" placeholder="Matrícula">
             <input type="text" name="servicio" placeholder="Tipo de servicio">
-            <input type="image" src="../img/lupa.jpg.png" alt="" onclick="">
+            <input type="image" src="../img/lupa.jpg.png" alt="Consultar servicios" onclick="consultarServicios(event)">
         </form>
     </div>
 </body>

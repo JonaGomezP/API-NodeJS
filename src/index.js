@@ -2,11 +2,8 @@
 const c = require('./common/connectionBBDD');
 var con = c.connection();
 
-bodyParser = require('body-parser'),
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+const bodyParser = require('body-parser');
 const cors = require('../node_modules/cors');
-app.use(cors());
 
 const { query } = require('express');
 const express = require('express');
@@ -20,6 +17,11 @@ app.set('json spaces', 2)
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+
+
 
 //Consulta los usuarios
 const queryUsers = require('./users/queryUser').consultarTodosUsuarios;
