@@ -48,7 +48,7 @@
             // });
         }
 
-        function consuktarVehiculos(e) {
+        function consultarVehiculos(e) {
 
             e.preventDefault();
             fetch("http://192.168.56.1:3000/vehiculos", {
@@ -112,7 +112,7 @@
             <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
             <input type="text" name="id_usuario" placeholder="ID de usuario">
             <input type="text" name="matricula" placeholder="Matrícula">
-            <input type="image" src="../img/lupa.jpg.png" alt="Consultar vehículos" onclick="consuktarVehiculos(event)">
+            <input type="image" src="../img/lupa.jpg.png" alt="Consultar vehículos" onclick="consultarVehiculos(event)">
         </form>
     </div>
     <div>
