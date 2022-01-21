@@ -13,39 +13,112 @@
         href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cormorant+Garamond:wght@300&family=Special+Elite&display=swap"
         rel="stylesheet">
     <script>
+        // function consultarUsuarios(e) {
+
+        //     e.preventDefault();
+        //     let id_usu = document.forms[0].id_usuario.value;
+        //     let nombreUsu = document.forms[0].nombre.value;
+
+        //     fetch("http://192.168.56.1:3000/usuarios", {
+        //         method: 'GET',
+        //         mode: 'cors',
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: new URLSearchParams({
+        //             'user.iduser': id_usu,
+        //             'user.name': nombreUsu
+        //         })
+        //     })
+        //         .then(response => {
+        //             if (!response.ok) {
+        //                 throw Error(response.statusText);
+        //             }
+        //             return response;
+        //         })
+        //         .then(response => {
+        //             return response.json()
+        //         })
+        //         .then(data => console.log(data))
+
+        //     // let tabla = document.createElement("table");
+        //     // data.forEach(e => {
+        //     //     console.log(e)
+        //     // });
+        // }
+
+
         function consultarUsuarios(e) {
 
-            e.preventDefault();
-            let id_usu = document.forms[0].id_usuario.value;
-            let nombreUsu = document.forms[0].nombre.value;
+            let id_usuario = document.forms[0].id_usuario.value;
+            let nombre = document.forms[0].nombre.value;
+            console.log(nombre)
 
-            fetch("http://192.168.56.1:3000/usuarios", {
-                method: 'GET',
-                mode: 'cors',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: new URLSearchParams({
-                    'user.iduser':id_usu,
-                    'user.name':nombreUsu
-                })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw Error(response.statusText);
+
+            if (id_usuario != "" && nombre == "") {
+                console.log(id_usuario)
+
+                e.preventDefault();
+                fetch("http://192.168.56.1:3000/usuarios" + "?id_usuario=" + id_usuario, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     }
-                    return response;
                 })
-                .then(response => {
-                    return response.json()
+                    .then(response => {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response;
+                    })
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(data => console.log(data))
+            } else if (nombre != "" && id_usuario == "") {
+                console.log(nombre)
+                fetch("http://192.168.56.1:3000/usuarios" + "?nombre=" + nombre, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
                 })
-                .then(data => console.log(data))
+                    .then(response => {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response;
+                    })
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(data => console.log(data))
+            } else {
+                fetch("http://192.168.56.1:3000/usuarios", {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response;
+                    })
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(data => console.log(data))
+            }
 
-            // let tabla = document.createElement("table");
-            // data.forEach(e => {
-            //     console.log(e)
-            // });
         }
 
         function consultarVehiculos(e) {
@@ -100,7 +173,7 @@
 <body>
     <div>
         <h1>Usuarios</h1>
-        <form action="index.html" method="get">
+        <form action="index.html" method="get" id="usuarios">
             <input type="text" name="id_usuario" placeholder="ID de usuario">
             <input type="text" name="nombre" placeholder="Nombre de usuario">
             <input type="image" src="../img/lupa.jpg.png" alt="Consultar usuarios" onclick="consultarUsuarios(event)">
