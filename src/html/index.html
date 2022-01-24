@@ -51,15 +51,17 @@
 
         function consultarUsuarios(e) {
 
+            e.preventDefault();
+
             let id_usuario = document.forms[0].id_usuario.value;
             let nombre = document.forms[0].nombre.value;
-            console.log(nombre)
+            nombre = nombre.replace(nombre.charAt(0), nombre.charAt(0).toUpperCase())
 
 
-            if (id_usuario != "" && nombre == "") {
+            if (id_usuario != "" && nombre === "") {
+
                 console.log(id_usuario)
 
-                e.preventDefault();
                 fetch("http://192.168.56.1:3000/usuarios" + "?id_usuario=" + id_usuario, {
                     method: 'GET',
                     mode: 'cors',
@@ -78,9 +80,8 @@
                         return response.json()
                     })
                     .then(data => console.log(data))
-            } else if (nombre != "" && id_usuario == "") {
-                console.log(nombre)
-                fetch("http://192.168.56.1:3000/usuarios" + "?nombre=" + nombre, {
+            } else if (nombre != "" && id_usuario === "") {
+                fetch("http://192.168.56.1:3000/usuarios" + "?nombre='" + nombre + "'", {
                     method: 'GET',
                     mode: 'cors',
                     headers: {
@@ -97,7 +98,7 @@
                     .then(response => {
                         return response.json()
                     })
-                    .then(data => console.log(data))
+                    .then(data => console.log(listaUsuarios))
             } else {
                 fetch("http://192.168.56.1:3000/usuarios", {
                     method: 'GET',
@@ -116,7 +117,20 @@
                     .then(response => {
                         return response.json()
                     })
-                    .then(data => console.log(data))
+                    .then(listaUsuarios => {
+                        let divUsuarios = document.getElementById("divUsuarios");
+                        listaUsuarios.forEach(usuario => {
+                            let tabla = document.createElement("table");
+                            for (const key in usuario) {
+                                let fila = document.createElement("tr");
+                                let columna = document.createElement("td");
+                                columna.textContent = usuario[key];
+                                fila.appendChild(columna);
+                                tabla.appendChild(fila);
+                            }
+                            divUsuarios.appendChild(tabla)
+                        });
+                    })
             }
 
         }
@@ -141,7 +155,7 @@
                 .then(response => {
                     return response.json()
                 })
-                .then(data => console.log(data))
+                .then(listaUsuarios => console.log(listaUsuarios))
         }
 
         function consultarServicios(e) {
@@ -164,14 +178,14 @@
                 .then(response => {
                     return response.json()
                 })
-                .then(data => console.log(data))
+                .then(listaUsuarios => console.log(listaUsuarios))
         }
 
     </script>
 </head>
 
 <body>
-    <div>
+    <div id="divUsuarios">
         <h1>Usuarios</h1>
         <form action="index.html" method="get" id="usuarios">
             <input type="text" name="id_usuario" placeholder="ID de usuario">
@@ -179,7 +193,7 @@
             <input type="image" src="../img/lupa.jpg.png" alt="Consultar usuarios" onclick="consultarUsuarios(event)">
         </form>
     </div>
-    <div>
+    <div id="divVehiculos">
         <h1>Vehículos</h1>
         <form action="index.html" method="get">
             <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
@@ -188,7 +202,7 @@
             <input type="image" src="../img/lupa.jpg.png" alt="Consultar vehículos" onclick="consultarVehiculos(event)">
         </form>
     </div>
-    <div>
+    <div id="divServicios">
         <h1>Servicios</h1>
         <form action="index.html" method="get">
             <input type="text" name="id_servicio" placeholder="ID del servicio">

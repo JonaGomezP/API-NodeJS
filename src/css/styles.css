@@ -13,7 +13,6 @@ body{
     background-attachment: fixed;
     background-image: url(../img/megane.jpg);
     background-size: cover;
-    
 }
 div{
     float: left;
@@ -49,4 +48,14 @@ input{
 }
 input[type="image"]{
     height: 85px;
+}
+
+table{
+    color:white;
+    border: salmon solid 2px ;
+    margin: 3%;
+}
+
+tr{
+    border-color: white solid 1px;
 }
