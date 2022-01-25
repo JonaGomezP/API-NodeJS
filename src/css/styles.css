@@ -25,6 +25,8 @@ div{
     flex-direction: column;
     text-align: center;
     padding-top: 1em;
+    justify-content: center;
+    align-items: center;
 }
 
 h1{
@@ -51,11 +53,17 @@ input[type="image"]{
 }
 
 table{
+    width: 60%;
     color:white;
-    border: salmon solid 2px ;
     margin: 3%;
+    font-size: large;
+    border-bottom: rgba(250, 128, 114, 0.5) solid 1px;
 }
 
 tr{
     border-color: white solid 1px;
+}
+
+td{
+    /* border-bottom: salmon solid 1px; */
 }
