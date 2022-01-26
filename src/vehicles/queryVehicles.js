@@ -23,7 +23,7 @@ const consultarVehiculos = (req, res, con) => {
         //Si se pasa la matrícula
     } else if (req.query.matricula) {
         let matricula = req.query.matricula;
-        let sql = "SELECT * from lista_vehiculos where matricula =" + matricula;
+        let sql = "SELECT * from lista_vehiculos where matricula ='" + matricula + "'";
         con.query(sql, function (err, result) {
             if (err) throw err;
             return res.json(result);

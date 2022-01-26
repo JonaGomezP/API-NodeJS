@@ -13,8 +13,8 @@ const consultarTodosUsuarios = (req, res, con) => {
         });
         //Si se consulta con el nombre de usuario
     } else if (req.query.nombre) {
-        let nombre = toString(req.query.nombre) ;
-        let sql = "SELECT * from datos_usuario where id_usuario=" + "'" +  + nombre + "'";
+        let nombre = req.query.nombre ;
+        let sql = "SELECT * from datos_usuario where nombre='" + nombre +"'" ;
         con.query(sql, function (err, result) {
             if (err) throw err;
             return res.json(result);
@@ -23,7 +23,7 @@ const consultarTodosUsuarios = (req, res, con) => {
         });
         //Si no se pasa ningún parámetro muestra todos
     } else {
-        let sql = "SELECT * from datos_usuario where id_usuario=";
+        let sql = "SELECT * from datos_usuario";
         con.query(sql, function (err, result) {
             if (err) throw err;
             return res.json(result);

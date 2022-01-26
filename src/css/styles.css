@@ -7,7 +7,6 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -15,7 +14,6 @@ body{
     background-size: cover;
 }
 div{
-    float: left;
     position: relative;
     width: 50%;
     min-height: 20em;
@@ -25,8 +23,8 @@ div{
     flex-direction: column;
     text-align: center;
     padding-top: 1em;
-    justify-content: center;
     align-items: center;
+    height: fit-content;
 }
 
 h1{
@@ -53,11 +51,14 @@ input[type="image"]{
 }
 
 table{
-    width: 60%;
+    width: 70%;
     color:white;
     margin: 3%;
     font-size: large;
     border-bottom: rgba(250, 128, 114, 0.5) solid 1px;
+    padding: 5%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2rem;
 }
 
 tr{
@@ -65,5 +66,10 @@ tr{
 }
 
 td{
-    /* border-bottom: salmon solid 1px; */
+    border-right: rgba(250, 128, 114, 0.5) solid 1px;
+    border-bottom: rgba(250, 128, 114, 0.2) solid 1px;
+}
+
+button{
+    margin-bottom: 1%;
 }
