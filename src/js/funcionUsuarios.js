@@ -38,10 +38,12 @@ function consultarUsuarios(e) {
                 boton.disabled = false;
                 boton.addEventListener("click", (e) => {
                     e.preventDefault();
-                    let tablas = document.querySelectorAll("table");
+                    let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
                     tablas.forEach(element => {
                         divUsuarios.removeChild(element)
                     });
+                    let inputIdUsuario = document.forms[0].id_usuario;
+                    inputIdUsuario.value = "";
                     boton.disabled = true;
                 })
                 listaUsuarios.forEach(usuario => {
@@ -92,10 +94,12 @@ function consultarUsuarios(e) {
                 boton.disabled = false;
                 boton.addEventListener("click", (e) => {
                     e.preventDefault();
-                    let tablas = document.querySelectorAll("table");
+                    let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
                     tablas.forEach(element => {
                         divUsuarios.removeChild(element)
                     });
+                    let inputNombre = document.forms[0].nombre;
+                    inputNombre.value = "";
                     boton.disabled = true;
                 })
                 listaUsuarios.forEach(usuario => {
@@ -146,8 +150,9 @@ function consultarUsuarios(e) {
                 boton.disabled = false;
                 boton.addEventListener("click", (e) => {
                     e.preventDefault();
-                    let tablas = document.querySelectorAll("table");
+                    let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
                     tablas.forEach(element => {
+                        console.log(element)
                         divUsuarios.removeChild(element)
                     });
                     boton.disabled = true;

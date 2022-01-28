@@ -38,24 +38,26 @@ function consultarVehiculos(e) {
                 boton.disabled = false;
                 boton.addEventListener("click", (e) => {
                     e.preventDefault();
-                    let tablas = document.querySelectorAll("table");
+                    let tablas = Array.from(document.getElementsByClassName("tablaVehiculos"));
                     tablas.forEach(element => {
                         divVehiculos.removeChild(element)
                     });
+                    let inputIdVehiculo = document.forms[1].id_vehiculo;
+                    inputIdVehiculo.value = "";
                     boton.disabled = true;
                 })
-                listaVehiculos.forEach(usuario => {
+                listaVehiculos.forEach(vehiculo => {
                     let tabla = document.createElement("table");
                     tabla.className = "tablaVehiculos";
 
-                    for (const key in usuario) {
+                    for (const key in vehiculo) {
                         if ((key != "pass" && key != "fecha_alta")) {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
                             columnaInfo.textContent = key;
                             let columnaDato = document.createElement("td");
-                            columnaDato.textContent = usuario[key];
+                            columnaDato.textContent = vehiculo[key];
                             fila.appendChild(columnaInfo);
                             fila.appendChild(columnaDato);
                             tabla.appendChild(fila);
@@ -93,24 +95,26 @@ function consultarVehiculos(e) {
                 boton.disabled = false;
                 boton.addEventListener("click", (e) => {
                     e.preventDefault();
-                    let tablas = document.querySelectorAll("table");
+                    let tablas = Array.from(document.getElementsByClassName("tablaVehiculos"));
                     tablas.forEach(element => {
                         divVehiculos.removeChild(element)
                     });
+                    let inputIdUsuario = document.forms[1].id_usuario;
+                    inputIdUsuario.value = "";
                     boton.disabled = true;
                 })
-                listaVehiculos.forEach(usuario => {
+                listaVehiculos.forEach(vehiculo => {
                     let tabla = document.createElement("table");
                     tabla.className = "tablaVehiculos";
 
-                    for (const key in usuario) {
+                    for (const key in vehiculo) {
                         if ((key != "pass" && key != "fecha_alta")) {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
                             columnaInfo.textContent = key;
                             let columnaDato = document.createElement("td");
-                            columnaDato.textContent = usuario[key];
+                            columnaDato.textContent = vehiculo[key];
                             fila.appendChild(columnaInfo);
                             fila.appendChild(columnaDato);
                             tabla.appendChild(fila);
@@ -149,24 +153,26 @@ function consultarVehiculos(e) {
                 boton.disabled = false;
                 boton.addEventListener("click", (e) => {
                     e.preventDefault();
-                    let tablas = document.querySelectorAll("table");
+                    let tablas = Array.from(document.getElementsByClassName("tablaVehiculos"));
                     tablas.forEach(element => {
                         divVehiculos.removeChild(element)
                     });
+                    let inputMatricula = document.forms[1].matricula;
+                    inputMatricula.value = "";
                     boton.disabled = true;
                 })
-                listaVehiculos.forEach(usuario => {
+                listaVehiculos.forEach(vehiculo => {
                     let tabla = document.createElement("table");
                     tabla.className = "tablaVehiculos";
 
-                    for (const key in usuario) {
+                    for (const key in vehiculo) {
                         if ((key != "pass" && key != "fecha_alta")) {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
                             columnaInfo.textContent = key;
                             let columnaDato = document.createElement("td");
-                            columnaDato.textContent = usuario[key];
+                            columnaDato.textContent = vehiculo[key];
                             fila.appendChild(columnaInfo);
                             fila.appendChild(columnaDato);
                             tabla.appendChild(fila);
@@ -181,7 +187,7 @@ function consultarVehiculos(e) {
             divVehiculos.removeChild(element)
         });
 
-        fetch("http://192.168.56.1:3000/usuarios", {
+        fetch("http://192.168.56.1:3000/vehiculos", {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -204,24 +210,24 @@ function consultarVehiculos(e) {
                 boton.disabled = false;
                 boton.addEventListener("click", (e) => {
                     e.preventDefault();
-                    let tablas = document.querySelectorAll("table");
+                    let tablas = Array.from(document.getElementsByClassName("tablaVehiculos"));
                     tablas.forEach(element => {
                         divVehiculos.removeChild(element)
                     });
                     boton.disabled = true;
                 })
-                listaVehiculos.forEach(usuario => {
+                listaVehiculos.forEach(vehiculo => {
                     let tabla = document.createElement("table");
                     tabla.className = "tablaVehiculos";
 
-                    for (const key in usuario) {
+                    for (const key in vehiculo) {
                         if ((key != "pass" && key != "fecha_alta")) {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
                             columnaInfo.textContent = key;
                             let columnaDato = document.createElement("td");
-                            columnaDato.textContent = usuario[key];
+                            columnaDato.textContent = vehiculo[key];
                             fila.appendChild(columnaInfo);
                             fila.appendChild(columnaDato);
                             tabla.appendChild(fila);

@@ -14,7 +14,7 @@ const consultarTodosUsuarios = (req, res, con) => {
         //Si se consulta con el nombre de usuario
     } else if (req.query.nombre) {
         let nombre = req.query.nombre ;
-        let sql = "SELECT * from datos_usuario where nombre='" + nombre +"'" ;
+        let sql = "SELECT * from datos_usuario where nombre LIKE '%" + nombre +"%'" ;
         con.query(sql, function (err, result) {
             if (err) throw err;
             return res.json(result);
