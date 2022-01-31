@@ -37,6 +37,9 @@ app.get('/vehiculos', (req,res) => queryVeh(req,res,con) );
 const querySer = require('./services/queryServices').consultarServicios;
 app.get('/servicios', (req,res) => querySer(req,res,con) );
 
+//Editar usuario
+const queryEditUser = require('./users/editUser').editUser;
+app.post('/usuarios', (req,res) => queryEditUser(req,res,con) );
 
 
 

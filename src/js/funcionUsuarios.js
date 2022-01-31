@@ -33,6 +33,8 @@ function consultarUsuarios(e) {
                 return response.json()
             })
             .then(listaUsuarios => {
+                if (listaUsuarios.lenght > 0) {
+
                 let divUsuarios = document.getElementById("divUsuarios");
                 let boton = document.getElementById("limpiarUsuarios");
                 boton.disabled = false;
@@ -65,6 +67,9 @@ function consultarUsuarios(e) {
                         divUsuarios.insertBefore(tabla, boton)
                     }
                 });
+            } else{
+                alert("Datos incorrectos");
+            }
             })
     } else if (nombre != "" && id_usuario === "") {
         let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
@@ -89,38 +94,43 @@ function consultarUsuarios(e) {
                 return response.json()
             })
             .then(listaUsuarios => {
-                let divUsuarios = document.getElementById("divUsuarios");
-                let boton = document.getElementById("limpiarUsuarios");
-                boton.disabled = false;
-                boton.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
-                    tablas.forEach(element => {
-                        divUsuarios.removeChild(element)
-                    });
-                    let inputNombre = document.forms[0].nombre;
-                    inputNombre.value = "";
-                    boton.disabled = true;
-                })
-                listaUsuarios.forEach(usuario => {
-                    let tabla = document.createElement("table");
-                    tabla.className = "tablaUsuarios";
+                if (listaUsuarios.lenght > 0) {
+                    let divUsuarios = document.getElementById("divUsuarios");
+                    let boton = document.getElementById("limpiarUsuarios");
+                    boton.disabled = false;
+                    boton.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
+                        tablas.forEach(element => {
+                            divUsuarios.removeChild(element)
+                        });
+                        let inputNombre = document.forms[0].nombre;
+                        inputNombre.value = "";
+                        boton.disabled = true;
+                    })
+                    listaUsuarios.forEach(usuario => {
+                        let tabla = document.createElement("table");
+                        tabla.className = "tablaUsuarios";
 
-                    for (const key in usuario) {
-                        if ((key != "pass" && key != "fecha_alta")) {
-                            let fila = document.createElement("tr");
-                            let columnaInfo = document.createElement("td");
-                            columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
-                            columnaInfo.textContent = key;
-                            let columnaDato = document.createElement("td");
-                            columnaDato.textContent = usuario[key];
-                            fila.appendChild(columnaInfo);
-                            fila.appendChild(columnaDato);
-                            tabla.appendChild(fila);
+                        for (const key in usuario) {
+                            if ((key != "pass" && key != "fecha_alta")) {
+                                let fila = document.createElement("tr");
+                                let columnaInfo = document.createElement("td");
+                                columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
+                                columnaInfo.textContent = key;
+                                let columnaDato = document.createElement("td");
+                                columnaDato.textContent = usuario[key];
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila);
+                            }
+                            divUsuarios.insertBefore(tabla, boton)
                         }
-                        divUsuarios.insertBefore(tabla, boton)
-                    }
-                });
+                    });
+                } else{
+                    alert("Datos incorrectos")
+                }
+
             })
     } else {
         let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
@@ -145,6 +155,7 @@ function consultarUsuarios(e) {
                 return response.json()
             })
             .then(listaUsuarios => {
+                if (listaUsuarios.lenght > 0) {
                 let divUsuarios = document.getElementById("divUsuarios");
                 let boton = document.getElementById("limpiarUsuarios");
                 boton.disabled = false;
@@ -176,6 +187,9 @@ function consultarUsuarios(e) {
                         divUsuarios.insertBefore(tabla, boton)
                     }
                 });
+            } else{
+                alert("Datos incorrectos");
+            }
             })
     }
 

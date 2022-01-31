@@ -17,7 +17,8 @@ const consultarTodosUsuarios = (req, res, con) => {
         let sql = "SELECT * from datos_usuario where nombre LIKE '%" + nombre +"%'" ;
         con.query(sql, function (err, result) {
             if (err) throw err;
-            return res.json(result);
+            
+                return res.json(result)
 
             // console.log("Result: " + JSON.stringify(result,null,2));
         });
