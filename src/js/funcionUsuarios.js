@@ -33,43 +33,71 @@ function consultarUsuarios(e) {
                 return response.json()
             })
             .then(listaUsuarios => {
-                if (listaUsuarios.lenght > 0) {
+                if (listaUsuarios.length > 0) {
+                    let divUsuarios = document.getElementById("divUsuarios");
+                    let boton = document.getElementById("limpiarUsuarios");
+                    boton.disabled = false;
+                    boton.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
+                        tablas.forEach(element => {
+                            divUsuarios.removeChild(element)
+                        });
+                        let inputIdUsuario = document.forms[0].id_usuario;
+                        inputIdUsuario.value = "";
+                        boton.disabled = true;
+                    })
+                    listaUsuarios.forEach(usuario => {
+                        let tabla = document.createElement("table");
+                        tabla.className = "tablaUsuarios";
 
-                let divUsuarios = document.getElementById("divUsuarios");
-                let boton = document.getElementById("limpiarUsuarios");
-                boton.disabled = false;
-                boton.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
-                    tablas.forEach(element => {
-                        divUsuarios.removeChild(element)
-                    });
-                    let inputIdUsuario = document.forms[0].id_usuario;
-                    inputIdUsuario.value = "";
-                    boton.disabled = true;
-                })
-                listaUsuarios.forEach(usuario => {
-                    let tabla = document.createElement("table");
-                    tabla.className = "tablaUsuarios";
+                        for (const key in usuario) {
+                            if ((key != "pass" && key != "fecha_alta")) {
+                                let fila = document.createElement("tr");
+                                let columnaInfo = document.createElement("td");
+                                columnaInfo.style.color = "rgba(242, 242, 242, 0.604)";
+                                columnaInfo.textContent = key;
 
-                    for (const key in usuario) {
-                        if ((key != "pass" && key != "fecha_alta")) {
-                            let fila = document.createElement("tr");
-                            let columnaInfo = document.createElement("td");
-                            columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
-                            columnaInfo.textContent = key;
-                            let columnaDato = document.createElement("td");
-                            columnaDato.textContent = usuario[key];
-                            fila.appendChild(columnaInfo);
-                            fila.appendChild(columnaDato);
-                            tabla.appendChild(fila);
+                                if (key === "id_usuario") {
+                                    let nuevoForm = document.createElement("form");
+                                    nuevoForm.method = "get";
+                                    nuevoForm.action = "index.html";
+                                    nuevoForm.id = "idUsuarioEliminar";
+
+                                    let nuevoInputIDUsuario = document.createElement("input");
+                                    nuevoInputIDUsuario.type = "number";
+                                    nuevoInputIDUsuario.value = usuario[key];
+                                    nuevoInputIDUsuario.readOnly = true;
+                                    let nuevoSubmit = document.createElement("input");
+                                    nuevoSubmit.type = "submit";
+                                    nuevoSubmit.value = "Eliminar usuario";
+                                    nuevoForm.appendChild(nuevoInputIDUsuario);
+                                    nuevoForm.appendChild(nuevoSubmit);
+
+                                    let columnaDato = document.createElement("td");
+
+                                    columnaDato.appendChild(nuevoForm);
+                                    fila.appendChild(columnaInfo);
+                                    fila.appendChild(columnaDato);
+                                    tabla.appendChild(fila)
+
+                                } else {
+                                    let columnaDato = document.createElement("td");
+                                    columnaDato.textContent = usuario[key];
+                                    fila.appendChild(columnaInfo);
+                                    fila.appendChild(columnaDato);
+                                    tabla.appendChild(fila);
+                                }
+                            }
+                            divUsuarios.insertBefore(tabla, boton)
                         }
-                        divUsuarios.insertBefore(tabla, boton)
-                    }
-                });
-            } else{
-                alert("Datos incorrectos");
-            }
+                    });
+                } else {
+                    alert("Datos incorrectos");
+                }
+
+
+
             })
     } else if (nombre != "" && id_usuario === "") {
         let tablas = Array.from(document.getElementsByClassName("tablaUsuarios"));
@@ -94,7 +122,7 @@ function consultarUsuarios(e) {
                 return response.json()
             })
             .then(listaUsuarios => {
-                if (listaUsuarios.lenght > 0) {
+                if (listaUsuarios.length > 0) {
                     let divUsuarios = document.getElementById("divUsuarios");
                     let boton = document.getElementById("limpiarUsuarios");
                     boton.disabled = false;
@@ -116,20 +144,47 @@ function consultarUsuarios(e) {
                             if ((key != "pass" && key != "fecha_alta")) {
                                 let fila = document.createElement("tr");
                                 let columnaInfo = document.createElement("td");
-                                columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
+                                columnaInfo.style.color = "rgba(242, 242, 242, 0.604)";
                                 columnaInfo.textContent = key;
-                                let columnaDato = document.createElement("td");
-                                columnaDato.textContent = usuario[key];
-                                fila.appendChild(columnaInfo);
-                                fila.appendChild(columnaDato);
-                                tabla.appendChild(fila);
+
+                                if (key === "id_usuario") {
+                                    let nuevoForm = document.createElement("form");
+                                    nuevoForm.method = "get";
+                                    nuevoForm.action = "index.html";
+                                    nuevoForm.id = "idUsuarioEliminar";
+
+                                    let nuevoInputIDUsuario = document.createElement("input");
+                                    nuevoInputIDUsuario.type = "number";
+                                    nuevoInputIDUsuario.value = usuario[key];
+                                    nuevoInputIDUsuario.readOnly = true;
+                                    let nuevoSubmit = document.createElement("input");
+                                    nuevoSubmit.type = "submit";
+                                    nuevoSubmit.value = "Eliminar usuario";
+                                    nuevoForm.appendChild(nuevoInputIDUsuario);
+                                    nuevoForm.appendChild(nuevoSubmit);
+
+                                    let columnaDato = document.createElement("td");
+
+                                    columnaDato.appendChild(nuevoForm);
+                                    fila.appendChild(columnaInfo);
+                                    fila.appendChild(columnaDato);
+                                    tabla.appendChild(fila)
+
+                                } else {
+                                    let columnaDato = document.createElement("td");
+                                    columnaDato.textContent = usuario[key];
+                                    fila.appendChild(columnaInfo);
+                                    fila.appendChild(columnaDato);
+                                    tabla.appendChild(fila);
+                                }
                             }
                             divUsuarios.insertBefore(tabla, boton)
                         }
                     });
-                } else{
-                    alert("Datos incorrectos")
+                } else {
+                    alert("Datos incorrectos");
                 }
+
 
             })
     } else {
@@ -155,7 +210,8 @@ function consultarUsuarios(e) {
                 return response.json()
             })
             .then(listaUsuarios => {
-                if (listaUsuarios.lenght > 0) {
+                console.log(listaUsuarios)
+
                 let divUsuarios = document.getElementById("divUsuarios");
                 let boton = document.getElementById("limpiarUsuarios");
                 boton.disabled = false;
@@ -176,20 +232,43 @@ function consultarUsuarios(e) {
                         if ((key != "pass" && key != "fecha_alta")) {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
-                            columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
+                            columnaInfo.style.color = "rgba(242, 242, 242, 0.604)";
                             columnaInfo.textContent = key;
-                            let columnaDato = document.createElement("td");
-                            columnaDato.textContent = usuario[key];
-                            fila.appendChild(columnaInfo);
-                            fila.appendChild(columnaDato);
-                            tabla.appendChild(fila);
+
+                            if (key === "id_usuario") {
+                                let nuevoForm = document.createElement("form");
+                                nuevoForm.method = "get";
+                                nuevoForm.action = "index.html";
+                                nuevoForm.id = "idUsuarioEliminar";
+
+                                let nuevoInputIDUsuario = document.createElement("input");
+                                nuevoInputIDUsuario.type = "number";
+                                nuevoInputIDUsuario.value = usuario[key];
+                                nuevoInputIDUsuario.readOnly = true;
+                                let nuevoSubmit = document.createElement("input");
+                                nuevoSubmit.type = "submit";
+                                nuevoSubmit.value = "Eliminar usuario";
+                                nuevoForm.appendChild(nuevoInputIDUsuario);
+                                nuevoForm.appendChild(nuevoSubmit);
+
+                                let columnaDato = document.createElement("td");
+
+                                columnaDato.appendChild(nuevoForm);
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila)
+
+                            } else {
+                                let columnaDato = document.createElement("td");
+                                columnaDato.textContent = usuario[key];
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila);
+                            }
                         }
                         divUsuarios.insertBefore(tabla, boton)
                     }
                 });
-            } else{
-                alert("Datos incorrectos");
-            }
             })
     }
 
