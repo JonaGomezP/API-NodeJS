@@ -27,6 +27,13 @@ app.use(cors());
 const queryUsers = require('./users/queryUser').consultarTodosUsuarios;
 app.get('/usuarios', (req,res) => queryUsers(req,res,con) );
 
+//Editar usuario
+const queryEditUser = require('./users/editUser').editarUsuario;
+app.post('/usuarios', (req,res) => queryEditUser(req,res,con) );
+
+//Eliminar usuario
+const queryDeleteUser = require('./users/deleteUser').eliminarUsuario;
+app.delete('/eliminarUsuario', (req,res) => queryDeleteUser(req,res,con) );
 
 //Consulta de los vehículos
 const queryVeh = require('./vehicles/queryVehicles').consultarVehiculos;
@@ -37,9 +44,9 @@ app.get('/vehiculos', (req,res) => queryVeh(req,res,con) );
 const querySer = require('./services/queryServices').consultarServicios;
 app.get('/servicios', (req,res) => querySer(req,res,con) );
 
-//Editar usuario
-const queryEditUser = require('./users/editUser').editUser;
-app.post('/usuarios', (req,res) => queryEditUser(req,res,con) );
+//Eliminar servicio
+const queryDeleteService = require('./services/deleteService').eliminarServicio;
+app.delete('/eliminarServicio', (req,res) => queryDeleteService(req,res,con) );
 
 
 

@@ -1,4 +1,4 @@
-const editUser = (req,res,con) => {
+const editarUsuario = (req,res,con) => {
     const id_usuario = req.query.id_usuario;
     let sql = "update datos_usuario set ? where id_usuario =" + id_usuario;
 
@@ -25,4 +25,4 @@ const editUser = (req,res,con) => {
     });
 }
 
-exports.editUser=editUser;
+exports.editarUsuario=editarUsuario;

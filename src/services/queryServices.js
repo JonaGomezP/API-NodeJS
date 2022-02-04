@@ -23,7 +23,7 @@ const consultarServicios = (req, res, con) => {
         //Si se pasa la matrícula
     } else if (req.query.matricula) {
         let matricula = req.query.matricula;
-        let sql = "SELECT * from lista_servicios where matricula =" + matricula;
+        let sql = "SELECT * from lista_servicios where matricula =" + "'" + matricula + "'";
         con.query(sql, function (err, result) {
             if (err) throw err;
             return res.json(result);
@@ -32,7 +32,7 @@ const consultarServicios = (req, res, con) => {
         });
     } else if (req.query.servicio) {
         let servicio = req.query.servicio;
-        let sql = "SELECT * from lista_servicios where servicio =" + servicio;
+        let sql = "SELECT * from lista_servicios where servicio =" + "'" + servicio + "'";
         con.query(sql, function (err, result) {
             if (err) throw err;
             return res.json(result);

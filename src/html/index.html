@@ -23,7 +23,7 @@
         <form action="index.html" method="get" id="formularioUsuarios">
             <input type="text" name="id_usuario" placeholder="ID Usuario">
             <input type="text" name="nombre" placeholder="Nombre de usuario">
-            <input type="image" src="../img/lupa.jpg.png" alt="Consultar usuarios" onclick="consultarUsuarios(event)">
+            <input id="buscarUsuarios" type="image" src="../img/lupa.jpg.png" alt="Consultar usuarios" onclick="consultarUsuarios(event)">
         </form>
         <button disabled id="limpiarUsuarios">Limpiar usuarios</button>
     </div>
@@ -33,7 +33,7 @@
             <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
             <input type="text" name="id_usuario" placeholder="ID de usuario">
             <input type="text" name="matricula" placeholder="Matrícula">
-            <input type="image" src="../img/lupa.jpg.png" alt="Consultar vehículos" onclick="consultarVehiculos(event)">
+            <input id="buscarVehiculo" type="image" src="../img/lupa.jpg.png" alt="Consultar vehículos" onclick="consultarVehiculos(event)">
         </form>
         <button disabled id="limpiarVehiculos">Limpiar vehículos</button>
     </div>
@@ -44,7 +44,7 @@
             <input type="text" name="id_vehiculo" placeholder="ID del vehículo">
             <input type="text" name="matricula" placeholder="Matrícula">
             <input type="text" name="servicio" placeholder="Tipo de servicio">
-            <input type="image" src="../img/lupa.jpg.png" alt="Consultar servicios" onclick="consultarServicios(event)">
+            <input id="buscarServicio" type="image" src="../img/lupa.jpg.png" alt="Consultar servicios" onclick="consultarServicios(event)">
         </form>
         <button disabled id="limpiarServicios">Limpiar servicios</button>
     </div>

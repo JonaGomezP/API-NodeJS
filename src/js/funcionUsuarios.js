@@ -1,3 +1,4 @@
+
 function consultarUsuarios(e) {
 
     e.preventDefault();
@@ -71,6 +72,10 @@ function consultarUsuarios(e) {
                                     let nuevoSubmit = document.createElement("input");
                                     nuevoSubmit.type = "submit";
                                     nuevoSubmit.value = "Eliminar usuario";
+                                    nuevoSubmit.addEventListener("click", (e) => {
+                                        e.preventDefault();
+                                        eliminarUsuario(nuevoInputIDUsuario);
+                                    });
                                     nuevoForm.appendChild(nuevoInputIDUsuario);
                                     nuevoForm.appendChild(nuevoSubmit);
 
@@ -160,6 +165,10 @@ function consultarUsuarios(e) {
                                     let nuevoSubmit = document.createElement("input");
                                     nuevoSubmit.type = "submit";
                                     nuevoSubmit.value = "Eliminar usuario";
+                                    nuevoSubmit.addEventListener("click", (e) => {
+                                        e.preventDefault();
+                                        eliminarUsuario(nuevoInputIDUsuario);
+                                    });
                                     nuevoForm.appendChild(nuevoInputIDUsuario);
                                     nuevoForm.appendChild(nuevoSubmit);
 
@@ -210,8 +219,6 @@ function consultarUsuarios(e) {
                 return response.json()
             })
             .then(listaUsuarios => {
-                console.log(listaUsuarios)
-
                 let divUsuarios = document.getElementById("divUsuarios");
                 let boton = document.getElementById("limpiarUsuarios");
                 boton.disabled = false;
@@ -248,6 +255,10 @@ function consultarUsuarios(e) {
                                 let nuevoSubmit = document.createElement("input");
                                 nuevoSubmit.type = "submit";
                                 nuevoSubmit.value = "Eliminar usuario";
+                                nuevoSubmit.addEventListener("click", (e) => {
+                                    e.preventDefault();
+                                    eliminarUsuario(nuevoInputIDUsuario);
+                                });
                                 nuevoForm.appendChild(nuevoInputIDUsuario);
                                 nuevoForm.appendChild(nuevoSubmit);
 
@@ -272,4 +283,20 @@ function consultarUsuarios(e) {
             })
     }
 
+}
+
+//Función eliminar usuario
+function eliminarUsuario(id) {
+    let buscar = document.getElementById("buscarUsuarios");
+    let idUsuario = id.value;
+
+    fetch("http://192.168.56.1:3000/eliminarUsuario?id_usuario=" + idUsuario, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    buscar.click();
 }
