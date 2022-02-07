@@ -39,6 +39,9 @@ app.delete('/eliminarUsuario', (req,res) => queryDeleteUser(req,res,con) );
 const queryVeh = require('./vehicles/queryVehicles').consultarVehiculos;
 app.get('/vehiculos', (req,res) => queryVeh(req,res,con) );
 
+//Eliminar vehículo
+const queryDeleteVehicle = require('./vehicles/deleteVehicle').eliminarVehiculo;
+app.delete('/eliminarVehiculo', (req,res) => queryDeleteVehicle(req,res,con) );
 
 //Consulta de los servicios
 const querySer = require('./services/queryServices').consultarServicios;

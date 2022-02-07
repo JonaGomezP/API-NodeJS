@@ -52,7 +52,7 @@ input[type="image"]{
     height: 85px;
 }
 input[type="submit"]{
-    width: max-content;
+    width: fit-content;
     font-size: 1em;
     font-size: auto;
     margin-left: 1rem ;
@@ -107,3 +107,5 @@ td{
 button{
     margin-bottom: 1%;
 }
+
+

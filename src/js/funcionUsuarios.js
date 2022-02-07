@@ -276,9 +276,23 @@ function consultarUsuarios(e) {
                                 fila.appendChild(columnaDato);
                                 tabla.appendChild(fila);
                             }
+
+
                         }
                         divUsuarios.insertBefore(tabla, boton)
+
                     }
+
+                    let botonModificarUsuario = document.createElement("input");
+                    botonModificarUsuario.type = "submit";
+                    botonModificarUsuario.value = "Editar usuario";
+                    modificarUsuario.id = "modificarUsuario";
+                    botonModificarUsuario.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        modificarUsuario(botonModificarUsuario);
+                    });
+                    tabla.appendChild(botonModificarUsuario);
+
                 });
             })
     }
@@ -299,4 +313,44 @@ function eliminarUsuario(id) {
         }
     })
     buscar.click();
+}
+
+//Función editar usuario
+function modificarUsuario() {
+
+    var id_usu = document.getElementById("usu");
+
+    var id_usu_value = id_usu.value;
+
+    var name = document.getElementById("nombre");
+    var dni = document.getElementById("dni");
+    var pass = document.getElementById("pass");
+    var rol = document.getElementById("rol");
+
+    var name_value = name.value;
+
+    var dni_value = dni.value;
+
+    var pass_value = pass.value;
+
+    var rol_value = rol.value;
+
+    const datos = { login: name_value, dni: dni_value, password: pass_value, rol_id: rol_value };
+
+    var url = "http://localhost:4000/ModificarUsuario/${id_usu_value}";
+
+    fetch(url, {
+        method: 'PUT',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    })
+
+        .then(response => {
+            return response.json()
+        })
+        .then(data => { })
 }

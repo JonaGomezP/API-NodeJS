@@ -56,11 +56,42 @@ function consultarVehiculos(e) {
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
                             columnaInfo.textContent = key;
-                            let columnaDato = document.createElement("td");
-                            columnaDato.textContent = vehiculo[key];
-                            fila.appendChild(columnaInfo);
-                            fila.appendChild(columnaDato);
-                            tabla.appendChild(fila);
+
+                            if (key === "id_vehiculo") {
+                                let nuevoForm = document.createElement("form");
+                                nuevoForm.method = "get";
+                                nuevoForm.action = "index.html";
+                                nuevoForm.id = "idVehiculoEliminar";
+
+                                let nuevoInputIDVehiculo = document.createElement("input");
+                                nuevoInputIDVehiculo.type = "number";
+                                nuevoInputIDVehiculo.value = vehiculo[key];
+                                nuevoInputIDVehiculo.readOnly = true;
+                                let nuevoSubmit = document.createElement("input");
+                                nuevoSubmit.type = "submit";
+                                nuevoSubmit.value = "Eliminar vehículo";
+                                nuevoSubmit.addEventListener("click", (e) => {
+                                    e.preventDefault();
+                                    eliminarVehiculo(nuevoInputIDVehiculo);
+                                });
+                                nuevoForm.appendChild(nuevoInputIDVehiculo);
+                                nuevoForm.appendChild(nuevoSubmit);
+
+                                let columnaDato = document.createElement("td");
+
+                                columnaDato.appendChild(nuevoForm);
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila)
+
+                            } else {
+                                let columnaDato = document.createElement("td");
+                                columnaDato.textContent = vehiculo[key];
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila);
+                            }
+
                         }
                         divVehiculos.insertBefore(tabla, boton)
                     }
@@ -113,11 +144,41 @@ function consultarVehiculos(e) {
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
                             columnaInfo.textContent = key;
-                            let columnaDato = document.createElement("td");
-                            columnaDato.textContent = vehiculo[key];
-                            fila.appendChild(columnaInfo);
-                            fila.appendChild(columnaDato);
-                            tabla.appendChild(fila);
+
+                            if (key === "id_vehiculo") {
+                                let nuevoForm = document.createElement("form");
+                                nuevoForm.method = "get";
+                                nuevoForm.action = "index.html";
+                                nuevoForm.id = "idVehiculoEliminar";
+
+                                let nuevoInputIDVehiculo = document.createElement("input");
+                                nuevoInputIDVehiculo.type = "number";
+                                nuevoInputIDVehiculo.value = vehiculo[key];
+                                nuevoInputIDVehiculo.readOnly = true;
+                                let nuevoSubmit = document.createElement("input");
+                                nuevoSubmit.type = "submit";
+                                nuevoSubmit.value = "Eliminar vehículo";
+                                nuevoSubmit.addEventListener("click", (e) => {
+                                    e.preventDefault();
+                                    eliminarVehiculo(nuevoInputIDVehiculo);
+                                });
+                                nuevoForm.appendChild(nuevoInputIDVehiculo);
+                                nuevoForm.appendChild(nuevoSubmit);
+
+                                let columnaDato = document.createElement("td");
+
+                                columnaDato.appendChild(nuevoForm);
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila)
+
+                            } else {
+                                let columnaDato = document.createElement("td");
+                                columnaDato.textContent = vehiculo[key];
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila);
+                            }
                         }
                         divVehiculos.insertBefore(tabla, boton)
                     }
@@ -171,11 +232,41 @@ function consultarVehiculos(e) {
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
                             columnaInfo.textContent = key;
-                            let columnaDato = document.createElement("td");
-                            columnaDato.textContent = vehiculo[key];
-                            fila.appendChild(columnaInfo);
-                            fila.appendChild(columnaDato);
-                            tabla.appendChild(fila);
+
+                            if (key === "id_vehiculo") {
+                                let nuevoForm = document.createElement("form");
+                                nuevoForm.method = "get";
+                                nuevoForm.action = "index.html";
+                                nuevoForm.id = "idVehiculoEliminar";
+
+                                let nuevoInputIDVehiculo = document.createElement("input");
+                                nuevoInputIDVehiculo.type = "number";
+                                nuevoInputIDVehiculo.value = vehiculo[key];
+                                nuevoInputIDVehiculo.readOnly = true;
+                                let nuevoSubmit = document.createElement("input");
+                                nuevoSubmit.type = "submit";
+                                nuevoSubmit.value = "Eliminar vehículo";
+                                nuevoSubmit.addEventListener("click", (e) => {
+                                    e.preventDefault();
+                                    eliminarVehiculo(nuevoInputIDVehiculo);
+                                });
+                                nuevoForm.appendChild(nuevoInputIDVehiculo);
+                                nuevoForm.appendChild(nuevoSubmit);
+
+                                let columnaDato = document.createElement("td");
+
+                                columnaDato.appendChild(nuevoForm);
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila);
+
+                            } else {
+                                let columnaDato = document.createElement("td");
+                                columnaDato.textContent = vehiculo[key];
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila);
+                            }
                         }
                         divVehiculos.insertBefore(tabla, boton)
                     }
@@ -226,15 +317,69 @@ function consultarVehiculos(e) {
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
                             columnaInfo.textContent = key;
-                            let columnaDato = document.createElement("td");
-                            columnaDato.textContent = vehiculo[key];
-                            fila.appendChild(columnaInfo);
-                            fila.appendChild(columnaDato);
-                            tabla.appendChild(fila);
+
+                            if (key === "id_vehiculo") {
+                                let nuevoForm = document.createElement("form");
+                                nuevoForm.method = "get";
+                                nuevoForm.action = "index.html";
+                                nuevoForm.id = "idVehiculoEliminar";
+
+                                let nuevoInputIDVehiculo = document.createElement("input");
+                                nuevoInputIDVehiculo.type = "number";
+                                nuevoInputIDVehiculo.value = vehiculo[key];
+                                nuevoInputIDVehiculo.readOnly = true;
+                                let nuevoSubmit = document.createElement("input");
+                                nuevoSubmit.type = "submit";
+                                nuevoSubmit.value = "Eliminar vehículo";
+                                nuevoSubmit.addEventListener("click", (e) => {
+                                    e.preventDefault();
+                                    eliminarVehiculo(nuevoInputIDVehiculo);
+                                });
+                                nuevoForm.appendChild(nuevoInputIDVehiculo);
+                                nuevoForm.appendChild(nuevoSubmit);
+
+                                let columnaDato = document.createElement("td");
+
+                                columnaDato.appendChild(nuevoForm);
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila);
+
+                            } else {
+                                let columnaDato = document.createElement("td");
+                                columnaDato.textContent = vehiculo[key];
+                                fila.appendChild(columnaInfo);
+                                fila.appendChild(columnaDato);
+                                tabla.appendChild(fila);
+                            }
                         }
                         divVehiculos.insertBefore(tabla, boton)
                     }
                 });
             })
     }
+}
+
+
+//Función eliminar vehiculo
+function eliminarVehiculo(id) {
+    console.log("prueba vehiculo")
+    let buscar = document.getElementById("buscarVehiculo");
+    let idVehiculo = id.value;
+
+    fetch("http://192.168.56.1:3000/eliminarVehiculo?id_vehiculo=" + idVehiculo, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        console.log(data);
+    } )
+    buscar.click();
 }
