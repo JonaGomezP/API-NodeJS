@@ -27,6 +27,10 @@ div{
     height: fit-content;
 }
 
+#div{
+    width: 100%;
+}
+
 h1{
     text-transform: uppercase;
     color: salmon;
@@ -38,10 +42,11 @@ form{
     flex-direction: column;
     position: relative;
     align-items: center;
+    width: fit-content;
 }
 
 input{
-    width: 100%;
+    width: fit-content;
     height: 2em;
     margin: 4%;
     font-size: 1em;
@@ -94,6 +99,7 @@ table{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 150%;
 }
+
 
 tr{
     border-color: white solid 1px;
