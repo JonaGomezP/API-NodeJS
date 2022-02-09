@@ -61,10 +61,8 @@ function consultarUsuarios(e) {
 
                                 if (key === "id_usuario") {
                                     let nuevoForm = document.createElement("form");
-                                    nuevoForm.method = "get";
-                                    nuevoForm.action = "index.html";
+                                    
                                     nuevoForm.id = "idUsuarioEliminar";
-
                                     let nuevoInputIDUsuario = document.createElement("input");
                                     nuevoInputIDUsuario.type = "number";
                                     nuevoInputIDUsuario.value = usuario[key];
@@ -96,13 +94,41 @@ function consultarUsuarios(e) {
                             }
                             divUsuarios.insertBefore(tabla, boton)
                         }
+                        let fila = document.createElement("tr");
+                        let col = document.createElement("td");
                         let botonModificarUsuario = document.createElement("input");
                         botonModificarUsuario.type = "submit";
                         botonModificarUsuario.value = "Editar usuario";
-                        botonModificarUsuario.id = "modificarUsuario";
                         botonModificarUsuario.addEventListener("click", (e) => {
                             e.preventDefault();
-                            modificarUsuario(botonModificarUsuario);
+                            let formuEditarUsu = document.createElement("form");
+                            formuEditarUsu.method = "POST";
+                            formuEditarUsu.action = "#";
+                            let inputNuevoNombre = document.createElement("input");
+                            inputNuevoNombre.type = "text";
+                            inputNuevoNombre.name = "nuevoNombre";
+                            inputNuevoNombre.setAttribute("placeholder", "Nombre");
+                            let inputNuevoApellido1 = document.createElement("input");
+                            inputNuevoApellido1.type = "text";
+                            inputNuevoApellido1.name = "nuevoApellido1";
+                            inputNuevoApellido1.setAttribute("placeholder", "Primer apellido");
+                            let inputNuevoApellido2 = document.createElement("input");
+                            inputNuevoApellido2.type = "text";
+                            inputNuevoApellido2.name = "nuevoApellido2";
+                            inputNuevoApellido2.setAttribute("placeholder", "Segundo apellido");
+                            let inputNuevaPass = document.createElement("input");
+                            inputNuevaPass.type = "password";
+                            inputNuevaPass.name = "nuevaPass";
+                            inputNuevaPass.setAttribute("placeholder", "Contraseña");
+
+                            formuEditarUsu.appendChild(inputNuevoNombre);
+                            formuEditarUsu.appendChild(inputNuevoApellido1);
+                            formuEditarUsu.appendChild(inputNuevoApellido2);
+                            formuEditarUsu.appendChild(inputNuevaPass);
+                            col.appendChild(formuEditarUsu);
+                            fila.appendChild(col);
+                            tabla.appendChild(fila);
+
                         });
                         tabla.appendChild(botonModificarUsuario);
                     });
@@ -163,10 +189,7 @@ function consultarUsuarios(e) {
 
                                 if (key === "id_usuario") {
                                     let nuevoForm = document.createElement("form");
-                                    nuevoForm.method = "get";
-                                    nuevoForm.action = "index.html";
                                     nuevoForm.id = "idUsuarioEliminar";
-
                                     let nuevoInputIDUsuario = document.createElement("input");
                                     nuevoInputIDUsuario.type = "number";
                                     nuevoInputIDUsuario.value = usuario[key];
@@ -200,13 +223,41 @@ function consultarUsuarios(e) {
                             }
                             divUsuarios.insertBefore(tabla, boton)
                         }
+                        let fila = document.createElement("tr");
+                        let col = document.createElement("td");
                         let botonModificarUsuario = document.createElement("input");
                         botonModificarUsuario.type = "submit";
                         botonModificarUsuario.value = "Editar usuario";
-                        botonModificarUsuario.id = "modificarUsuario";
                         botonModificarUsuario.addEventListener("click", (e) => {
                             e.preventDefault();
-                            modificarUsuario(botonModificarUsuario);
+                            let formuEditarUsu = document.createElement("form");
+                            formuEditarUsu.method = "POST";
+                            formuEditarUsu.action = "#";
+                            let inputNuevoNombre = document.createElement("input");
+                            inputNuevoNombre.type = "text";
+                            inputNuevoNombre.name = "nuevoNombre";
+                            inputNuevoNombre.setAttribute("placeholder", "Nombre");
+                            let inputNuevoApellido1 = document.createElement("input");
+                            inputNuevoApellido1.type = "text";
+                            inputNuevoApellido1.name = "nuevoApellido1";
+                            inputNuevoApellido1.setAttribute("placeholder", "Primer apellido");
+                            let inputNuevoApellido2 = document.createElement("input");
+                            inputNuevoApellido2.type = "text";
+                            inputNuevoApellido2.name = "nuevoApellido2";
+                            inputNuevoApellido2.setAttribute("placeholder", "Segundo apellido");
+                            let inputNuevaPass = document.createElement("input");
+                            inputNuevaPass.type = "password";
+                            inputNuevaPass.name = "nuevaPass";
+                            inputNuevaPass.setAttribute("placeholder", "Contraseña");
+
+                            formuEditarUsu.appendChild(inputNuevoNombre);
+                            formuEditarUsu.appendChild(inputNuevoApellido1);
+                            formuEditarUsu.appendChild(inputNuevoApellido2);
+                            formuEditarUsu.appendChild(inputNuevaPass);
+                            col.appendChild(formuEditarUsu);
+                            fila.appendChild(col);
+                            tabla.appendChild(fila);
+
                         });
                         tabla.appendChild(botonModificarUsuario);
                     });
@@ -264,10 +315,7 @@ function consultarUsuarios(e) {
 
                             if (key === "id_usuario") {
                                 let nuevoForm = document.createElement("form");
-                                nuevoForm.method = "get";
-                                nuevoForm.action = "index.html";
                                 nuevoForm.id = "idUsuarioEliminar";
-
                                 let nuevoInputIDUsuario = document.createElement("input");
                                 nuevoInputIDUsuario.type = "number";
                                 nuevoInputIDUsuario.value = usuario[key];
@@ -302,13 +350,13 @@ function consultarUsuarios(e) {
                         divUsuarios.insertBefore(tabla, boton)
                     }
 
+                    let fila = document.createElement("tr");
+                    let col = document.createElement("td");
                     let botonModificarUsuario = document.createElement("input");
                     botonModificarUsuario.type = "submit";
                     botonModificarUsuario.value = "Editar usuario";
                     botonModificarUsuario.addEventListener("click", (e) => {
                         e.preventDefault();
-                        let nuevoDivEditarusu = document.createElement("div");
-                        nuevoDivEditarusu.id = "divEditarUsuario";
                         let formuEditarUsu = document.createElement("form");
                         formuEditarUsu.method = "POST";
                         formuEditarUsu.action = "#";
@@ -333,8 +381,9 @@ function consultarUsuarios(e) {
                         formuEditarUsu.appendChild(inputNuevoApellido1);
                         formuEditarUsu.appendChild(inputNuevoApellido2);
                         formuEditarUsu.appendChild(inputNuevaPass);
-                        nuevoDivEditarusu.appendChild(formuEditarUsu);
-                        tabla.appendChild(nuevoDivEditarusu);
+                        col.appendChild(formuEditarUsu);
+                        fila.appendChild(col);
+                        tabla.appendChild(fila);
 
                     });
                     tabla.appendChild(botonModificarUsuario);
