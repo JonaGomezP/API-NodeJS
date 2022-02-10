@@ -9,6 +9,12 @@ const { query } = require('express');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('../Docs/swagger_output.json');
+
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
 //Configuraciones
 app.set('port', process.env.PORT || 3000);
 app.set('json spaces', 2)
