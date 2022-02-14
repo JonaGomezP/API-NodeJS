@@ -61,7 +61,7 @@ function consultarUsuarios(e) {
 
                                 if (key === "id_usuario") {
                                     let nuevoForm = document.createElement("form");
-                                    
+
                                     nuevoForm.id = "idUsuarioEliminar";
                                     let nuevoInputIDUsuario = document.createElement("input");
                                     nuevoInputIDUsuario.type = "number";
@@ -101,9 +101,11 @@ function consultarUsuarios(e) {
                         botonModificarUsuario.value = "Editar usuario";
                         botonModificarUsuario.addEventListener("click", (e) => {
                             e.preventDefault();
+                            botonModificarUsuario.disabled = true;
                             let formuEditarUsu = document.createElement("form");
                             formuEditarUsu.method = "POST";
                             formuEditarUsu.action = "#";
+                            formuEditarUsu.id = "modificarUsuario";
                             let inputNuevoNombre = document.createElement("input");
                             inputNuevoNombre.type = "text";
                             inputNuevoNombre.name = "nuevoNombre";
@@ -120,11 +122,21 @@ function consultarUsuarios(e) {
                             inputNuevaPass.type = "password";
                             inputNuevaPass.name = "nuevaPass";
                             inputNuevaPass.setAttribute("placeholder", "Contraseña");
+                            inputNuevoSubmit = document.createElement("input");
+                            inputNuevoSubmit.type = "submit";
+                            inputNuevoSubmit.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                modificarUsuario(usuario["id_usuario"]);
+                            });
+                            inputNuevoSubmit.value = "Modificar";
+
 
                             formuEditarUsu.appendChild(inputNuevoNombre);
                             formuEditarUsu.appendChild(inputNuevoApellido1);
                             formuEditarUsu.appendChild(inputNuevoApellido2);
                             formuEditarUsu.appendChild(inputNuevaPass);
+                            formuEditarUsu.appendChild(inputNuevoSubmit);
+
                             col.appendChild(formuEditarUsu);
                             fila.appendChild(col);
                             tabla.appendChild(fila);
@@ -230,9 +242,11 @@ function consultarUsuarios(e) {
                         botonModificarUsuario.value = "Editar usuario";
                         botonModificarUsuario.addEventListener("click", (e) => {
                             e.preventDefault();
+                            botonModificarUsuario.disabled = true;
                             let formuEditarUsu = document.createElement("form");
                             formuEditarUsu.method = "POST";
                             formuEditarUsu.action = "#";
+                            formuEditarUsu.id = "modificarUsuario";
                             let inputNuevoNombre = document.createElement("input");
                             inputNuevoNombre.type = "text";
                             inputNuevoNombre.name = "nuevoNombre";
@@ -249,11 +263,21 @@ function consultarUsuarios(e) {
                             inputNuevaPass.type = "password";
                             inputNuevaPass.name = "nuevaPass";
                             inputNuevaPass.setAttribute("placeholder", "Contraseña");
+                            inputNuevoSubmit = document.createElement("input");
+                            inputNuevoSubmit.type = "submit";
+                            inputNuevoSubmit.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                modificarUsuario(usuario["id_usuario"]);
+                            });
+                            inputNuevoSubmit.value = "Modificar";
+
 
                             formuEditarUsu.appendChild(inputNuevoNombre);
                             formuEditarUsu.appendChild(inputNuevoApellido1);
                             formuEditarUsu.appendChild(inputNuevoApellido2);
                             formuEditarUsu.appendChild(inputNuevaPass);
+                            formuEditarUsu.appendChild(inputNuevoSubmit);
+
                             col.appendChild(formuEditarUsu);
                             fila.appendChild(col);
                             tabla.appendChild(fila);
@@ -357,9 +381,11 @@ function consultarUsuarios(e) {
                     botonModificarUsuario.value = "Editar usuario";
                     botonModificarUsuario.addEventListener("click", (e) => {
                         e.preventDefault();
+                        botonModificarUsuario.disabled = true;
                         let formuEditarUsu = document.createElement("form");
                         formuEditarUsu.method = "POST";
                         formuEditarUsu.action = "#";
+                        formuEditarUsu.id = "modificarUsuario";
                         let inputNuevoNombre = document.createElement("input");
                         inputNuevoNombre.type = "text";
                         inputNuevoNombre.name = "nuevoNombre";
@@ -376,11 +402,21 @@ function consultarUsuarios(e) {
                         inputNuevaPass.type = "password";
                         inputNuevaPass.name = "nuevaPass";
                         inputNuevaPass.setAttribute("placeholder", "Contraseña");
+                        inputNuevoSubmit = document.createElement("input");
+                        inputNuevoSubmit.type = "submit";
+                        inputNuevoSubmit.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            modificarUsuario(usuario["id_usuario"]);
+                        });
+                        inputNuevoSubmit.value = "Modificar";
+
 
                         formuEditarUsu.appendChild(inputNuevoNombre);
                         formuEditarUsu.appendChild(inputNuevoApellido1);
                         formuEditarUsu.appendChild(inputNuevoApellido2);
                         formuEditarUsu.appendChild(inputNuevaPass);
+                        formuEditarUsu.appendChild(inputNuevoSubmit);
+
                         col.appendChild(formuEditarUsu);
                         fila.appendChild(col);
                         tabla.appendChild(fila);
@@ -411,41 +447,46 @@ function eliminarUsuario(id) {
 }
 
 //Función editar usuario
-function modificarUsuario() {
+function modificarUsuario(id_usu) {
 
-    var id_usu = document.getElementById("usu");
+    let formModificarUsu = document.getElementById("modificarUsuario");
+    var id_usuario = id_usu;
+    var nombre = formModificarUsu.nuevoNombre.value;
+    var primerApellido = formModificarUsu.nuevoApellido1.value;
+    var segundoApellido = formModificarUsu.nuevoApellido2.value;
+    var pass = formModificarUsu.nuevaPass.value;
 
-    var id_usu_value = id_usu.value;
+    let datosFormu = new FormData();
+    datosFormu.append('nombre', nombre);
+    datosFormu.append('apellido1', primerApellido);
+    datosFormu.append('apellido2', segundoApellido);
+    datosFormu.append('pass', pass);
 
-    var name = document.getElementById("nombre");
-    var dni = document.getElementById("dni");
-    var pass = document.getElementById("pass");
-    var rol = document.getElementById("rol");
+    console.log(id_usuario);
+    console.log(datosFormu.get("nombre"));
+    console.log(datosFormu.get("apellido1"));
+    console.log(datosFormu.get("apellido2"));
+    console.log(datosFormu.get("pass"));
 
-    var name_value = name.value;
 
-    var dni_value = dni.value;
+    var objetoFormData = {};
+    datosFormu.forEach(function (value, key) {
+        objetoFormData[key] = value;
+    });
 
-    var pass_value = pass.value;
 
-    var rol_value = rol.value;
-
-    const datos = { login: name_value, dni: dni_value, password: pass_value, rol_id: rol_value };
-
-    var url = "http://localhost:4000/ModificarUsuario/${id_usu_value}";
-
-    fetch(url, {
+    fetch("http://192.168.56.1:3000/editarUsuario/?id_usuario=" + id_usuario, {
         method: 'PUT',
         mode: 'cors',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(datos)
+        body: JSON.stringify(objetoFormData)
     })
-
         .then(response => {
             return response.json()
         })
-        .then(data => { })
+        .then(datos => {
+        })
 }

@@ -35,7 +35,7 @@ app.get('/usuarios', (req,res) => queryUsers(req,res,con) );
 
 //Editar usuario
 const queryEditUser = require('./users/editUser').editarUsuario;
-app.post('/usuarios', (req,res) => queryEditUser(req,res,con) );
+app.put('/editarUsuario', (req,res) => queryEditUser(req,res,con) );
 
 //Eliminar usuario
 const queryDeleteUser = require('./users/deleteUser').eliminarUsuario;

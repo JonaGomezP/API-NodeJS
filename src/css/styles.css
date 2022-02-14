@@ -117,8 +117,9 @@ button{
     margin-bottom: 1%;
 }
 
-#formuEditarUsu{
-    
-}
+
+
+
+#map { position: absolute; bottom: 0; width: 100%; }
 
 
