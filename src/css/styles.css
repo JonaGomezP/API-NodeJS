@@ -6,7 +6,6 @@
 
 body{
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,7 +13,8 @@ body{
     background-image: url(../img/megane.jpg);
     background-size: cover;
 }
-div{
+.contenedor{
+    float: none;
     position: relative;
     width: 60%;
     min-height: 20em;
@@ -23,14 +23,11 @@ div{
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-top: 1em;
+    padding: 1em;
     align-items: center;
     height: fit-content;
 }
 
-#div{
-    width: 100%;
-}
 
 h1{
     text-transform: uppercase;
@@ -118,8 +115,13 @@ button{
 }
 
 
-
-
-#map { position: absolute; bottom: 0; width: 100%; }
+#map {
+    position: relative;
+    margin-top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30rem;
+    margin: auto;
+}
 
 

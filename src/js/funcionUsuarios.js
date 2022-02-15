@@ -371,7 +371,8 @@ function consultarUsuarios(e) {
 
 
                         }
-                        divUsuarios.insertBefore(tabla, boton)
+                        divUsuarios.insertBefore(tabla, boton);
+                        // mostrarMapa(tabla);
                     }
 
                     let fila = document.createElement("tr");
@@ -429,6 +430,28 @@ function consultarUsuarios(e) {
     }
 
 }
+
+// //Funcion mostrar mapa
+// function mostrarMapa(tab) {
+//     let tabla = tab;
+//     let div = document.createElement("div");
+//     div.id = "map";
+//     mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYXRhbmdwIiwiYSI6ImNremZmbmE4ajByaWgydm9jbzFqMnYyY3EifQ.P9ATBR18P3XXQ5ElUNEgRQ';
+//     const map = new mapboxgl.Map({
+//         container: 'map',
+//         style: 'mapbox://styles/mapbox/streets-v11',
+//         center: [-4.451477692248896, 36.700286804792285],
+//         zoom: 20
+//     });
+
+
+    // Create a default Marker and add it to the map.
+//     const marker1 = new mapboxgl.Marker()
+//         .setLngLat([-4.451477692248896, 36.700286804792285])
+//         .addTo(map);
+        
+//         tabla.appendChild(div);
+// }
 
 //Función eliminar usuario
 function eliminarUsuario(id) {

@@ -1,6 +1,27 @@
-function consultarVehiculos(e) {
+window.onload = () => {
+    // TO MAKE THE MAP APPEAR YOU MUST
+    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYXRhbmdwIiwiYSI6ImNremZmbmE4ajByaWgydm9jbzFqMnYyY3EifQ.P9ATBR18P3XXQ5ElUNEgRQ';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/outdoors-v11',
+        center: [-4.46029211736527, 36.69144671696021],
+        zoom: 12,
+    });
 
-    e.preventDefault();
+
+    let botonBuscar = document.getElementById("buscarVehiculo");
+    botonBuscar.addEventListener('click', (e) => {
+        e.preventDefault();
+        consultarVehiculos(map);
+    })
+}
+
+
+
+
+function consultarVehiculos(map) {
 
     formularioVehiculos = document.getElementById("formularioVehiculos")
     let id_usuario = formularioVehiculos.id_usuario.value;
@@ -34,6 +55,9 @@ function consultarVehiculos(e) {
             })
             .then(listaVehiculos => {
                 let divVehiculos = document.getElementById("divVehiculos");
+
+
+
                 let boton = document.getElementById("limpiarVehiculos");
                 boton.disabled = false;
                 boton.addEventListener("click", (e) => {
@@ -51,7 +75,8 @@ function consultarVehiculos(e) {
                     tabla.className = "tablaVehiculos";
 
                     for (const key in vehiculo) {
-                        if ((key != "pass" && key != "fecha_alta")) {
+
+                        if (key != "pass" && key != "fecha_alta" && key != "latitud" && key != "longitud") {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
@@ -93,7 +118,14 @@ function consultarVehiculos(e) {
                             }
 
                         }
-                        divVehiculos.insertBefore(tabla, boton)
+                        divVehiculos.insertBefore(tabla, boton);
+
+                        
+                        // Create a default Marker and add it to the map.
+                        const marker1 = new mapboxgl.Marker()
+                            .setLngLat([vehiculo['latitud'], vehiculo['longitud']])
+                            .addTo(map);
+
                     }
                 });
             })
@@ -139,7 +171,7 @@ function consultarVehiculos(e) {
                     tabla.className = "tablaVehiculos";
 
                     for (const key in vehiculo) {
-                        if ((key != "pass" && key != "fecha_alta")) {
+                        if (key != "pass" && key != "fecha_alta" && key != "latitud" && key != "longitud") {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
@@ -180,7 +212,12 @@ function consultarVehiculos(e) {
                                 tabla.appendChild(fila);
                             }
                         }
-                        divVehiculos.insertBefore(tabla, boton)
+                        divVehiculos.insertBefore(tabla, boton);
+                        
+                        // Create a default Marker and add it to the map.
+                        const marker1 = new mapboxgl.Marker()
+                            .setLngLat([vehiculo['latitud'], vehiculo['longitud']])
+                            .addTo(map);
                     }
                 });
             })
@@ -227,7 +264,7 @@ function consultarVehiculos(e) {
                     tabla.className = "tablaVehiculos";
 
                     for (const key in vehiculo) {
-                        if ((key != "pass" && key != "fecha_alta")) {
+                        if (key != "pass" && key != "fecha_alta" && key != "latitud" && key != "longitud") {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
@@ -268,7 +305,12 @@ function consultarVehiculos(e) {
                                 tabla.appendChild(fila);
                             }
                         }
-                        divVehiculos.insertBefore(tabla, boton)
+                        divVehiculos.insertBefore(tabla, boton);
+
+                        // Create a default Marker and add it to the map.
+                        const marker1 = new mapboxgl.Marker()
+                            .setLngLat([vehiculo['latitud'], vehiculo['longitud']])
+                            .addTo(map);
                     }
                 });
             })
@@ -311,8 +353,10 @@ function consultarVehiculos(e) {
                     let tabla = document.createElement("table");
                     tabla.className = "tablaVehiculos";
 
+
                     for (const key in vehiculo) {
-                        if ((key != "pass" && key != "fecha_alta")) {
+
+                        if (key != "pass" && key != "fecha_alta" && key != "latitud" && key != "longitud") {
                             let fila = document.createElement("tr");
                             let columnaInfo = document.createElement("td");
                             columnaInfo.style.color = "rgba(242, 242, 242, 0.604)"
@@ -344,7 +388,6 @@ function consultarVehiculos(e) {
                                 fila.appendChild(columnaInfo);
                                 fila.appendChild(columnaDato);
                                 tabla.appendChild(fila);
-
                             } else {
                                 let columnaDato = document.createElement("td");
                                 columnaDato.textContent = vehiculo[key];
@@ -353,7 +396,14 @@ function consultarVehiculos(e) {
                                 tabla.appendChild(fila);
                             }
                         }
-                        divVehiculos.insertBefore(tabla, boton)
+
+                        divVehiculos.insertBefore(tabla, boton);
+
+                        // Create a default Marker and add it to the map.
+                        const marker1 = new mapboxgl.Marker()
+                            .setLngLat([vehiculo['latitud'], vehiculo['longitud']])
+                            .addTo(map);
+
                     }
                 });
             })
@@ -375,11 +425,11 @@ function eliminarVehiculo(id) {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => {
-        return response.json()
-    })
-    .then(data => {
-        console.log(data);
-    } )
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            console.log(data);
+        })
     buscar.click();
 }
